@@ -1,4 +1,4 @@
-# 🪐 Satoshium — [Repository Name]
+# 🪐 Satoshium — Store
 
 Satoshium Store is the merchandise and brand surface of the Satoshium ecosystem. It exists to allow supporters, builders, and observers to participate in the project through physical artifacts, apparel, and symbolic items connected to the Satoshium vision.
 
@@ -148,3 +148,4 @@ Satoshium explores how decentralized intelligence systems can be built using:
 Experimental platform under active development.
 
 <img width="647" height="2743" alt="image" src="https://github.com/user-attachments/assets/3233790f-9aae-4818-b137-4e3048314190" />
+
