@@ -156,6 +156,16 @@ hr{border:none;border-top:1px solid var(--line);margin:22px 0}
   grid-template-columns:repeat(1fr,1fr);
   gap:16px
 }
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+/* THIS is the key */
+.full-width {
+  grid-column: 1 / -1;
+} 
 .note{
   margin-top:10px;
   padding:12px 14px;
