@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Satoshium — Knowledge Layer</title>
+<title>Satoshium — Store Layer</title>
 <style>
 :root{
  --card-wm: url('https://satoshium.link/assets/seal.png');
@@ -36,6 +36,20 @@ a{color:var(--gold2);text-decoration:none}
 a:hover{color:var(--gold)}
 .wrap{max-width:1080px;margin:0 auto;padding:0 18px}
 .content{padding:34px 18px 60px}
+
+ .wrap.content{
+  opacity:0;
+  transform:translateY(6px);
+  animation:pageEnter .28s cubic-bezier(.22,.61,.36,1) forwards;
+}
+
+@keyframes pageEnter{
+ to{
+ opacity:1;
+ transform:translateY(0);
+ }
+}
+
 h1,h2,h3{margin:0 0 10px}
 h1{font-size:34px;color:var(--gold2);line-height:1.15}
 h2{font-size:22px;color:var(--gold2);margin-top:0}
@@ -137,7 +151,50 @@ hr{border:none;border-top:1px solid var(--line);margin:22px 0}
   grid-template-columns:repeat(3,1fr);
   gap:16px
 }
+ .grid-4{
+  display:grid;
+  grid-template-columns:repeat(1fr,1fr);
+  gap:16px
+}
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.teepublic-section {
+  margin-top: 24px;
+}
+
+.store-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.store-grid .full-width {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 768px) {
+  .store-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .store-grid .full-width {
+    grid-column: auto;
+  }
+}
  
+.full-width {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 768px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+} 
 .note{
   margin-top:10px;
   padding:12px 14px;
@@ -164,6 +221,10 @@ hr{border:none;border-top:1px solid var(--line);margin:22px 0}
   color:var(--text);
   font-size:12px;
 }
+ .span-2{
+  grid-column: 1 / -1;
+}
+
 .mini{font-size:13px}
 ul{margin:8px 0 0 18px}
 
@@ -178,149 +239,151 @@ ul{margin:8px 0 0 18px}
 </head>
 <body id="top">
 <div id="topbar-slot" data-topbar="universe"></div>
-<script src="https://satoshium.link/components/topbar-loader.js"></script>
+<script src="/components/topbar-loader.js"></script>
 
 <main class="wrap content">
 
 <section class="hero">
-  <div class="pill">🌐 Satoshium Info • Knowledge Layer</div>
+  <div class="pill">🛍️ Satoshium Store • Brand & Merchandise</div>
 
-  <h1 style="margin-top:14px;">The public knowledge and engineering layer of Satoshium.</h1>
+  <h1 style="margin-top:14px;">The merchandise and economic layer of Satoshium.</h1>
 
   <p class="muted" style="max-width:900px;">
-    Satoshium Info is the documentation, architecture, and development intelligence surface of the Satoshium ecosystem.
-    It exists to make the project understandable, navigable, and durable — not just for today’s build cycle,
-    but for the long arc of what Satoshium could become by 2035 and beyond.
+    Satoshium Store is the merchandise and brand surface of the Satoshium ecosystem.
+    It exists to allow supporters, builders, and observers to participate in the project
+    through physical artifacts, apparel, and symbolic items connected to the Satoshium vision.
   </p>
 
   <p class="muted" style="max-width:900px;">
-    If Satoshium AI becomes the public-facing platform, then Satoshium Info becomes the place where structure is preserved,
-    systems are mapped, work is organized, and the deeper logic of the ecosystem remains visible over time.
+    If Satoshium AI represents the platform and Satoshium Info represents the knowledge layer,
+    then Satoshium Store represents the economic and cultural layer — the place where the
+    identity of the ecosystem can extend into the physical world.
   </p>
 
   <div class="hero-actions">
-    <a class="pill pill-link" href="/workspace/">Open Workspace</a>
-    <a class="pill pill-link" href="/workspace/architecture/">View Architecture</a>
-    <a class="pill pill-link" href="/workspace/repos/">Explore Repos</a>
+    <a class="pill pill-link" href="https://satoshium.info/workspace/">Open Workspace</a>
+    <a class="pill pill-link" href="https://satoshium.ai" target="_blank" rel="noopener">Visit Platform</a>
+    <a class="pill pill-link" href="https://satoshium.info" target="_blank" rel="noopener">View Info</a>
   </div>
 
   <div class="statline">
-    <span class="stat">🧠 Documentation Layer</span>
-    <span class="stat">🏛️ Architectural Memory</span>
-    <span class="stat">🔧 Public Engineering Surface</span>
-    <span class="stat">📚 Long-Horizon Reference</span>
+    <span class="stat">🛍️ Merchandise Layer</span>
+    <span class="stat">🎨 Brand Expression</span>
+    <span class="stat">🌐 Community Support</span>
+    <span class="stat">📦 Physical Artifacts</span>
   </div>
 </section>
 
- <section class="teepublic-section">
-  <div class="feature-layout">
+<div class="grid-2">
+ <div class="span-2" id="domain-layers"></div>
 
-    <div class="left-stack">
-      <div class="card full-width">
-        <div class="card-header"><h2>🛍️ Satoshium Store — Phase 1 Live</h2></div>
+<script>
+fetch("https://satoshium.link/components/domain-layers.html")
+ .then(r => r.text())
+ .then(data => {
+ document.getElementById("domain-layers").innerHTML = data;
+ });
+</script>
 
-        <p>The Satoshium Store is now live.</p>
+<section class="teepublic-section">
+     <div class="card full-width">
+      <div class="card-header">🛍️ Satoshium Store — Phase 1 Live</div>
 
-        <p>
-          This is the first step into the economic and cultural layer —
-          where principles become artifacts, and ideas take physical form.
-        </p>
+      <p>The Satoshium Store is now live.</p>
 
-        <p style="margin-top:10px;">
-          <strong>10 foundational designs released.</strong><br>
-          Built on signal, truth, and verifiability.
-        </p>
+      <p>
+        This is the first step into the economic and cultural layer —
+        where principles become artifacts, and ideas take physical form.
+      </p>
 
-        <div style="margin-top:16px;">
-          <a href="https://www.teepublic.com/user/satoshium" target="_blank" rel="noopener" class="btn-primary">
-            Enter the Store →
-          </a>
-        </div>
+      <p style="margin-top:10px;">
+        <strong>10 foundational designs released.</strong><br>
+        Built on signal, truth, and verifiability.
+      </p>
 
-        <div style="margin-top:12px; font-size:12px; opacity:0.7;">
-          Phase 1 • Minimalist Core Series
-        </div>
+      <div style="margin-top:16px;">
+        <a href="https://www.teepublic.com/user/satoshium" target="_blank" class="btn-primary">
+          Enter the Store →
+        </a>
+      </div>
+
+      <div style="margin-top:12px; font-size:12px; opacity:0.7;">
+        Phase 1 • Minimalist Core Series
+    </div>
+
+    <div class="card">
+      <h2>Why Satoshium Store Exists</h2>
+      <p class="muted">
+        Technology projects often live entirely in code and infrastructure.
+        Satoshium Store exists to give the ecosystem a visible and tangible expression.
+        Through merchandise, symbols, and artifacts, the project becomes something
+        people can hold, wear, share, and represent in the real world.
+      </p>
+      <div class="note">
+        This domain is the cultural and economic layer of the Satoshium ecosystem.
       </div>
     </div>
-   </section>
- 
-<div class="grid-2">
 
-  <div class="card">
-    <h2>Why Satoshium Info Exists</h2>
-    <p class="muted">
-      Complex systems fail when their structure becomes invisible. Satoshium Info exists to prevent that.
-      It gives the ecosystem a place to preserve its architecture, document its growth, and maintain
-      continuity between experiments, repositories, interfaces, and future public systems.
-    </p>
-    <div class="note">
-      This domain is not just a workspace. It is the emerging memory layer of Satoshium.
+    <div class="card">
+      <h2>The 2035 Role</h2>
+      <p class="muted">
+        By 2035, this site could become the official merchandise and artifact store
+        for the Satoshium ecosystem — offering items that represent the project's
+        history, milestones, and community identity.
+      </p>
+      <div class="note">
+        In that future, Satoshium Store becomes more than a shop — it becomes a record
+        of the culture that grew around the ecosystem.
+      </div>
     </div>
-  </div>
 
-  <div class="card">
-    <h2>The 2035 Role</h2>
-    <p class="muted">
-      By 2035, this site could serve as the canonical reference layer for Satoshium’s public architecture —
-      a place where builders, contributors, observers, and future systems can understand how the ecosystem fits together,
-      what each layer does, and how the project evolved over time.
-    </p>
-    <div class="note">
-      In that future, Satoshium Info becomes less like a website and more like a living systems archive.
-    </div>
   </div>
-
-</div>
+</section>
 
 <div class="card">
   <h2>What This Site Can Grow Into</h2>
   <div class="grid-3">
 
     <div>
-      <h3>📚 Documentation Hub</h3>
+      <h3>👕 Apparel</h3>
       <p class="muted mini">
-        A central place for definitions, technical notes, canonical structures, operating principles,
-        and internal explanations across the Satoshium ecosystem.
+        Clothing and wearable designs that represent the philosophy and identity of Satoshium.
       </p>
     </div>
 
     <div>
-      <h3>🗺️ Ecosystem Map</h3>
+      <h3>🎨 Digital Artifacts</h3>
       <p class="muted mini">
-        A public map of domains, repositories, services, agents, modules, and experiments —
-        showing how all major pieces connect over time.
+        Posters, artwork, and collectible designs inspired by the Satoshium ecosystem.
       </p>
     </div>
 
     <div>
-      <h3>🏛️ Architectural Archive</h3>
+      <h3>🧠 Concept Merchandise</h3>
       <p class="muted mini">
-        A preserved record of design choices, domain roles, build phases, and structural reasoning,
-        so future growth does not lose its original logic.
+        Products that visually represent decentralized intelligence, Bitcoin alignment,
+        and long-horizon thinking.
       </p>
     </div>
 
     <div>
-      <h3>🔧 Engineering Surface</h3>
+      <h3>📦 Limited Releases</h3>
       <p class="muted mini">
-        A visible place for ongoing work: debugging, page refinement, repo organization,
-        design iteration, and active systems planning.
+        Special items tied to milestones in the development of Satoshium.
       </p>
     </div>
 
     <div>
-      <h3>🧠 AI Collaboration Layer</h3>
+      <h3>🌐 Community Support</h3>
       <p class="muted mini">
-        A practical environment where screenshots, working notes, references, and structured sections
-        support AI-assisted development without friction.
+        Merchandise that helps supporters participate in and promote the ecosystem.
       </p>
     </div>
 
     <div>
-      <h3>📈 Institutional Memory</h3>
+      <h3>🏛️ Cultural Archive</h3>
       <p class="muted mini">
-        A long-horizon layer that helps the project remain coherent as it expands across years,
-        tools, domains, repos, public products, and contributor participation.
+        Over time, the store may also reflect the cultural history of the Satoshium project.
       </p>
     </div>
 
@@ -330,16 +393,17 @@ ul{margin:8px 0 0 18px}
 <div class="card">
   <h2>The Satoshium Domain Architecture</h2>
   <p class="muted">
-    Satoshium Info is one layer within a broader multi-domain ecosystem. Each domain has a distinct role,
+    Satoshium Store is one layer within a broader multi-domain ecosystem. Each domain has a distinct role,
     allowing the project to separate public presence, experiments, infrastructure, knowledge, and commerce.
   </p>
 
   <ul>
-    <li><strong>satoshium.ai</strong> — public-facing platform and primary brand surface</li>
-    <li><strong>satoshium.info</strong> — knowledge layer, documentation hub, and public engineering surface</li>
-    <li><strong>satoshium.xyz</strong> — experimental systems, agent testing, and frontier concepts</li>
-    <li><strong>satoshium.net</strong> — network, infrastructure, and future node-oriented visibility</li>
-    <li><strong>satoshium.store</strong> — merchandise and economic/brand layer</li>
+    <li><strong>satoshium.ai</strong> — public-facing platform</li>
+    <li><strong>satoshium-progress</strong> — development progress and public build surface</li>
+    <li><strong>satoshium.info</strong> — documentation and knowledge layer</li>
+    <li><strong>satoshium.xyz</strong> — experimental systems and frontier concepts</li>
+    <li><strong>satoshium.net</strong> — infrastructure and network layer</li>
+    <li><strong>satoshium.store</strong> — merchandise and economic layer</li>
   </ul>
 
   <div class="note">
@@ -352,34 +416,34 @@ ul{margin:8px 0 0 18px}
   <div class="card">
     <h2>Current Workspace Functions</h2>
     <p class="muted">
-      Today, Satoshium Info already includes a structured workspace for active development.
-      That workspace gives each major kind of work its own home.
+      Today, Satoshium Store includes a structured workspace for active planning and development.
+      That workspace provides a place to organize brand, design, and merchandising ideas before the full store layer exists.
     </p>
     <ul>
-      <li><strong>Debug</strong> — visual troubleshooting and asset/path fixes</li>
-      <li><strong>Repos</strong> — repository structures and ecosystem organization</li>
-      <li><strong>UI</strong> — interface patterns, design experiments, and polish</li>
-      <li><strong>Architecture</strong> — domain maps, systems planning, and layered thinking</li>
+      <li><strong>Debug</strong> — troubleshooting and technical fixes</li>
+      <li><strong>Repos</strong> — repository and systems organization</li>
+      <li><strong>UI</strong> — visual direction, layouts, and future storefront concepts</li>
+      <li><strong>Architecture</strong> — ecosystem role, relationships, and planning notes</li>
       <li><strong>Temp</strong> — short-term staging area for active sessions</li>
     </ul>
-    <p><a href="/workspace/">Enter Workspace →</a></p>
+    <p><a href="https://satoshium.info/workspace/">Enter Workspace →</a></p>
   </div>
 
   <div class="card">
     <h2>Likely Future Sections</h2>
     <p class="muted">
-      Within reason, this site could gradually expand to include additional knowledge and development layers
+      Within reason, this site could gradually expand to include additional commerce and brand-focused layers
       as the ecosystem matures.
     </p>
     <ul>
-      <li>Canonical definitions</li>
-      <li>System timelines and milestone history</li>
-      <li>Public changelogs and development logs</li>
-      <li>Agent catalogs and module registries</li>
-      <li>Design system references</li>
-      <li>Service maps and ecosystem diagrams</li>
-      <li>Research notes and essays</li>
-      <li>Developer onboarding references</li>
+      <li>Product collections and launch pages</li>
+      <li>Milestone-based merchandise releases</li>
+      <li>Brand style references</li>
+      <li>Artwork and poster concepts</li>
+      <li>Symbolic collectible lines</li>
+      <li>Community support merchandise</li>
+      <li>Store essays and product stories</li>
+      <li>Buyer onboarding and store policies</li>
     </ul>
   </div>
 
@@ -388,58 +452,52 @@ ul{margin:8px 0 0 18px}
 <div class="card">
   <h2>Possible Future Layers</h2>
   <p class="muted">
-    As Satoshium Info matures, this domain can expand beyond today’s workspace and become a broader
-    reference surface for the entire ecosystem. These are plausible future layers that could be added
+    As Satoshium Store matures, this domain can expand beyond today’s workspace and become a broader
+    commercial and cultural surface for the ecosystem. These are plausible future layers that could be added
     over time without changing the core purpose of the site.
   </p>
 
   <div class="grid-3">
 
     <div>
-      <h3>📖 Canon / Definitions</h3>
+      <h3>🛒 Product Catalog</h3>
       <p class="muted mini">
-        A stable reference layer for core Satoshium terms, principles, and canonical concepts so the
-        ecosystem retains shared meaning as it grows.
+        A structured home for apparel, prints, accessories, and future merchandise collections tied to the Satoshium identity.
       </p>
     </div>
 
     <div>
-      <h3>🕰️ Timeline / Evolution</h3>
+      <h3>🎁 Limited Drops</h3>
       <p class="muted mini">
-        A structured historical layer showing major milestones, domain launches, repository phases,
-        public updates, and key architectural shifts over time.
+        A release layer for milestone-based items, event-driven merchandise, and special edition products.
       </p>
     </div>
 
     <div>
-      <h3>🗂️ Registry / Systems Index</h3>
+      <h3>🖼️ Artwork & Posters</h3>
       <p class="muted mini">
-        A navigable directory of systems, modules, agents, interfaces, repos, and services that gives
-        visitors a clear map of what exists inside the ecosystem.
+        A place for visual artifacts, framed concepts, collectible designs, and symbolic pieces connected to the project.
       </p>
     </div>
 
     <div>
-      <h3>🧪 Research / Essays</h3>
+      <h3>🧠 Brand Storytelling</h3>
       <p class="muted mini">
-        A place for longer-form thinking: architectural essays, research notes, system reflections,
-        future-use cases, and strategic writing connected to the Satoshium vision.
+        A longer-form layer that explains the ideas, symbolism, and philosophy behind products and collections.
       </p>
     </div>
 
     <div>
-      <h3>🛠️ Developer Onboarding</h3>
+      <h3>🤝 Community Support</h3>
       <p class="muted mini">
-        A practical entry point for future contributors, with explanations of structure, naming patterns,
-        workflows, standards, and how to understand the ecosystem without overwhelm.
+        A practical surface where supporters can participate in and help strengthen the cultural presence of the ecosystem.
       </p>
     </div>
 
     <div>
-      <h3>📰 Public Build Logs</h3>
+      <h3>🏛️ Artifact Archive</h3>
       <p class="muted mini">
-        A transparent record of visible progress — not just polished outputs, but the build process itself:
-        iterations, experiments, refinements, and long-horizon development in motion.
+        A preserved record of major releases, store milestones, and physical expressions of the Satoshium project over time.
       </p>
     </div>
 
@@ -447,37 +505,39 @@ ul{margin:8px 0 0 18px}
 
   <div class="note">
     These layers do not all need to exist now. The purpose of listing them is to show how
-    satoshium.info can grow into a durable systems-intelligence domain by 2035.
+    satoshium.store can grow into a durable merchandise and cultural domain by 2035.
   </div>
 </div>
 
- 
 <div class="card">
   <h2>A Big-Picture View of 2035</h2>
   <p class="muted">
-    In the long run, Satoshium Info could become the place where the project explains itself to the world:
-    not through hype, but through clarity. A future visitor might come here not only to inspect the structure
-    of Satoshium, but to understand how decentralized intelligence, cryptographic rules, documented systems,
-    and long-horizon design came together in one coherent ecosystem.
+    In the long run, Satoshium Store could become the place where the ecosystem’s identity takes physical form:
+    not only through products, but through symbols, artifacts, and milestone pieces that reflect the growth of the project.
+    A future visitor might come here not only to browse merchandise, but to see how the culture of Satoshium evolved over time.
   </p>
 
   <p class="muted">
-    That is the larger role of this site. It is where the project learns to remember itself.
+    That is the larger role of this site. It is where the project learns how to express itself in the world.
   </p>
 </div>
 
 <div class="card">
   <h2>Current Status</h2>
   <p class="muted">
-    Satoshium Info is now live as an independent domain and has begun establishing its initial workspace,
-    structure, and identity. The foundation is in place. Over time, this site can evolve from a practical
-    development surface into a durable knowledge and architecture layer for the broader Satoshium project.
+    Satoshium Store is currently in its early conceptual stage.
+    The structure of the domain has been established, but the merchandise layer
+    will grow gradually alongside the development of the broader Satoshium ecosystem.
+  </p>
+
+  <p class="muted">
+    Future releases may include apparel, collectibles, artwork, and symbolic
+    items representing milestones in the evolution of Satoshium.
   </p>
 </div>
 
-</div>
- 
-</main>                     
+</main>
+
 <div class="wrap reflection">
 <hr />
 <div id="random-saying" class="muted" style="margin-bottom:14px; max-width:760px;">
@@ -492,8 +552,10 @@ ul{margin:8px 0 0 18px}
 fetch("https://satoshium.link/components/footer.html")
  .then(response => response.text())
  .then(data => {
- document.getElementById("footer-container").innerHTML = data;
+   document.getElementById("footer-container").innerHTML = data;
  });
 </script>
+</div>
 </body>
 </html>
+
