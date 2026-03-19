@@ -162,9 +162,14 @@ hr{border:none;border-top:1px solid var(--line);margin:22px 0}
   gap: 20px;
 }
 
-/* THIS is the key */
 .full-width {
   grid-column: 1 / -1;
+}
+
+@media (max-width: 768px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
 } 
 .note{
   margin-top:10px;
@@ -256,67 +261,68 @@ fetch("https://satoshium.link/components/domain-layers.html")
  });
 </script>
 
- <section class="teepublic">
-<div class="card">
-  <!-- FULL WIDTH CARD -->
-  <div class="card full-width">
-    🛍️ Satoshium Store — Phase 1 Live
-  </div>
+<section class="teepublic">
+  <div class="card-grid">
+    
+    <!-- FULL WIDTH CARD -->
+    <div class="card full-width">
+      <div class="card-header">🛍️ Satoshium Store — Phase 1 Live</div>
 
-  <p>
-    The Satoshium Store is now live.
-  </p>
+      <p>
+        The Satoshium Store is now live.
+      </p>
 
-  <p>
-    This is the first step into the economic and cultural layer —
-    where principles become artifacts, and ideas take physical form.
-  </p>
+      <p>
+        This is the first step into the economic and cultural layer —
+        where principles become artifacts, and ideas take physical form.
+      </p>
 
-  <p style="margin-top:10px;">
-    <strong>10 foundational designs released.</strong><br>
-    Built on signal, truth, and verifiability.
-  </p>
+      <p style="margin-top:10px;">
+        <strong>10 foundational designs released.</strong><br>
+        Built on signal, truth, and verifiability.
+      </p>
 
-  <div style="margin-top:16px;">
-    <a href="https://www.teepublic.com/user/satoshium" target="_blank" class="btn-primary">
-      Enter the Store →
-    </a>
-  </div>
- 
-  <div style="margin-top:12px; font-size: 12px; opacity: 0.7;">
-    Phase 1 • Minimalist Core Series
-  </div>
-</div>
- </section>
-  
- <div class="card-grid">
-  <div class="card">
-    <h2>Why Satoshium Store Exists</h2>
-    <p class="muted">
-      Technology projects often live entirely in code and infrastructure.
-      Satoshium Store exists to give the ecosystem a visible and tangible expression.
-      Through merchandise, symbols, and artifacts, the project becomes something
-      people can hold, wear, share, and represent in the real world.
-    </p>
-    <div class="note">
-      This domain is the cultural and economic layer of the Satoshium ecosystem.
+      <div style="margin-top:16px;">
+        <a href="https://www.teepublic.com/user/satoshium" target="_blank" class="btn-primary">
+          Enter the Store →
+        </a>
+      </div>
+
+      <div style="margin-top:12px; font-size:12px; opacity:0.7;">
+        Phase 1 • Minimalist Core Series
+      </div>
     </div>
-  </div>
 
-  <div class="card">
-    <h2>The 2035 Role</h2>
-    <p class="muted">
-      By 2035, this site could become the official merchandise and artifact store
-      for the Satoshium ecosystem — offering items that represent the project's
-      history, milestones, and community identity.
-    </p>
-    <div class="note">
-      In that future, Satoshium Store becomes more than a shop — it becomes a record
-      of the culture that grew around the ecosystem.
+    <!-- NORMAL CARD -->
+    <div class="card">
+      <h2>Why Satoshium Store Exists</h2>
+      <p class="muted">
+        Technology projects often live entirely in code and infrastructure.
+        Satoshium Store exists to give the ecosystem a visible and tangible expression.
+        Through merchandise, symbols, and artifacts, the project becomes something
+        people can hold, wear, share, and represent in the real world.
+      </p>
+      <div class="note">
+        This domain is the cultural and economic layer of the Satoshium ecosystem.
+      </div>
     </div>
+
+    <!-- NORMAL CARD -->
+    <div class="card">
+      <h2>The 2035 Role</h2>
+      <p class="muted">
+        By 2035, this site could become the official merchandise and artifact store
+        for the Satoshium ecosystem — offering items that represent the project's
+        history, milestones, and community identity.
+      </p>
+      <div class="note">
+        In that future, Satoshium Store becomes more than a shop — it becomes a record
+        of the culture that grew around the ecosystem.
+      </div>
+    </div>
+
   </div>
- </div>
-</div>
+</section>
 
 <div class="card">
   <h2>What This Site Can Grow Into</h2>
