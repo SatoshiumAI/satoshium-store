@@ -153,8 +153,50 @@ hr{border:none;border-top:1px solid var(--line);margin:22px 0}
 }
  .grid-4{
   display:grid;
-  grid-template-columns:repeat(1fr,1fr);
+  grid-template-columns:repeat(2,1fr);
   gap:16px
+}
+.card-header{
+  color:var(--gold2);
+  font-weight:800;
+  font-size:18px;
+  margin-bottom:10px;
+}
+.btn-primary{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:10px 14px;
+  border:1px solid var(--line);
+  border-radius:999px;
+  background:rgba(214,163,74,.10);
+  color:var(--gold2);
+  font-weight:700;
+  box-shadow:0 0 12px rgba(214,163,74,.20);
+}
+.btn-primary:hover{
+  background:rgba(214,163,74,.16);
+  color:var(--gold2);
+}
+.feature-layout{
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:16px;
+  align-items:start;
+}
+.feature-layout .card{
+  margin:0;
+}
+.store-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:16px;
+}
+.store-grid .card{
+  margin:0;
+}
+.store-grid .full-width{
+  grid-column:1 / -1;
 }
 .card-grid {
   display: grid;
@@ -276,51 +318,76 @@ ul{margin:8px 0 0 18px}
 
 <div class="grid-2">
  <div class="span-2" id="domain-layers"></div>
+</div>
 
 <script>
 fetch("https://satoshium.link/components/domain-layers.html")
  .then(r => r.text())
  .then(data => {
- document.getElementById("domain-layers").innerHTML = data;
+   document.getElementById("domain-layers").innerHTML = data;
  });
 </script>
 
-<section class="store-grid">
+<section class="teepublic-section">
+  <div class="feature-layout">
 
-<div class="wrap content">
- 
-<!-- FULL WIDTH CARD -->
-<div class="card full-width">
-  <h2>🛍️ Satoshium Store — Phase 1 Live</h2>
-  <p>The Satoshium Store is now live.</p>
-  <p>This is the first step into the economic and cultural layer.</p>
-  <p><strong>10 foundational designs released.</strong></p>
-  <a href="https://www.teepublic.com/user/satoshium" target="_blank">Enter the Store →</a>
-</div>
+    <div class="store-grid">
+      <div class="card full-width">
+        <div class="card-header">🛍️ Satoshium Store — Phase 1 Live</div>
 
-<!-- CARD 1 -->
-<div class="card">
-  <h2>Why Satoshium Store Exists</h2>
-  <p class="muted">
-    Technology projects often live entirely in code. This brings it into the real world.
-  </p>
-</div>
+        <p>The Satoshium Store is now live.</p>
 
-<!-- CARD 2 -->
-<div class="card">
-  <h2>The 2035 Role</h2>
-  <p class="muted">
-    A future artifact layer representing milestones and culture.
-  </p>
-</div>
+        <p>
+          This is the first step into the economic and cultural layer —
+          where principles become artifacts, and ideas take physical form.
+        </p>
 
-</div>
-</section>
+        <p style="margin-top:10px;">
+          <strong>10 foundational designs released.</strong><br>
+          Built on signal, truth, and verifiability.
+        </p>
 
- 
-<div class="card">
-  <h2>What This Site Can Grow Into</h2>
-  <div class="grid-3">
+        <div style="margin-top:16px;">
+          <a href="https://www.teepublic.com/user/satoshium" target="_blank" rel="noopener" class="btn-primary">
+            Enter the Store →
+          </a>
+        </div>
+
+        <div style="margin-top:12px; font-size:12px; opacity:0.7;">
+          Phase 1 • Minimalist Core Series
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Why Satoshium Store Exists</h2>
+        <p class="muted">
+          Technology projects often live entirely in code and infrastructure.
+          Satoshium Store exists to give the ecosystem a visible and tangible expression.
+          Through merchandise, symbols, and artifacts, the project becomes something
+          people can hold, wear, share, and represent in the real world.
+        </p>
+        <div class="note">
+          This domain is the cultural and economic layer of the Satoshium ecosystem.
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>The 2035 Role</h2>
+        <p class="muted">
+          By 2035, this site could become the official merchandise and artifact store
+          for the Satoshium ecosystem — offering items that represent the project's
+          history, milestones, and community identity.
+        </p>
+        <div class="note">
+          In that future, Satoshium Store becomes more than a shop — it becomes a record
+          of the culture that grew around the ecosystem.
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>What This Site Can Grow Into</h2>
+      <div class="grid-3">
 
     <div>
       <h3>👕 Apparel</h3>
@@ -365,8 +432,11 @@ fetch("https://satoshium.link/components/domain-layers.html")
       </p>
     </div>
 
+      </div>
+    </div>
+
   </div>
-</div>
+</section>
 
 <div class="card">
   <h2>The Satoshium Domain Architecture</h2>
@@ -536,7 +606,3 @@ fetch("https://satoshium.link/components/footer.html")
 </div>
 </body>
 </html>
-
-
-
-
