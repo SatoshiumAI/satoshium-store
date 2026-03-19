@@ -151,6 +151,11 @@ hr{border:none;border-top:1px solid var(--line);margin:22px 0}
   grid-template-columns:repeat(3,1fr);
   gap:16px
 }
+ .grid-4{
+  display:grid;
+  grid-template-columns:repeat(1fr,1fr);
+  gap:16px
+}
 .note{
   margin-top:10px;
   padding:12px 14px;
@@ -241,7 +246,7 @@ fetch("https://satoshium.link/components/domain-layers.html")
  });
 </script>
 
-<div class="card">
+<div class="grid-4">>
   <div class="span-2">
     🛍️ Satoshium Store — Now Live
   </div>
