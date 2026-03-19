@@ -180,51 +180,41 @@ hr{border:none;border-top:1px solid var(--line);margin:22px 0}
 }
 .feature-layout{
   display:grid;
-  grid-template-columns:1.15fr .85fr;
+  grid-template-columns: 1.15fr 0.85fr;
   gap:16px;
   align-items:start;
 }
+
+.left-stack{
+  display:grid;
+  grid-template-columns:repeat(2, minmax(0,1fr));
+  gap:16px;
+}
+
+.left-stack .full-width{
+  grid-column:1 / -1;
+}
+
+.left-stack .card,
 .feature-layout .card{
   margin:0;
 }
-.store-grid{
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:16px;
-}
-.store-grid .card{
-  margin:0;
-}
-.store-grid .full-width{
-  grid-column:1 / -1;
-}
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+
+.tall-card{
+  height:100%;
 }
 
-.teepublic-section {
-  margin-top: 24px;
-}
-
-.store-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 20px;
-}
-
-.store-grid .full-width {
-  grid-column: 1 / -1;
-}
-
-@media (max-width: 768px) {
-  .store-grid {
-    grid-template-columns: 1fr;
+@media (max-width: 768px){
+  .feature-layout{
+    grid-template-columns:1fr;
   }
 
-  .store-grid .full-width {
-    grid-column: auto;
+  .left-stack{
+    grid-template-columns:1fr;
+  }
+
+  .left-stack .full-width{
+    grid-column:auto;
   }
 }
  
@@ -331,7 +321,7 @@ fetch("https://satoshium.link/components/domain-layers.html")
 <section class="teepublic-section">
   <div class="feature-layout">
 
-    <div class="store-grid">
+    <div class="left-stack">
       <div class="card full-width">
         <div class="card-header">🛍️ Satoshium Store — Phase 1 Live</div>
 
@@ -385,52 +375,52 @@ fetch("https://satoshium.link/components/domain-layers.html")
       </div>
     </div>
 
-    <div class="card">
+    <div class="card tall-card">
       <h2>What This Site Can Grow Into</h2>
       <div class="grid-3">
 
-    <div>
-      <h3>👕 Apparel</h3>
-      <p class="muted mini">
-        Clothing and wearable designs that represent the philosophy and identity of Satoshium.
-      </p>
-    </div>
+        <div>
+          <h3>👕 Apparel</h3>
+          <p class="muted mini">
+            Clothing and wearable designs that represent the philosophy and identity of Satoshium.
+          </p>
+        </div>
 
-    <div>
-      <h3>🎨 Digital Artifacts</h3>
-      <p class="muted mini">
-        Posters, artwork, and collectible designs inspired by the Satoshium ecosystem.
-      </p>
-    </div>
+        <div>
+          <h3>🎨 Digital Artifacts</h3>
+          <p class="muted mini">
+            Posters, artwork, and collectible designs inspired by the Satoshium ecosystem.
+          </p>
+        </div>
 
-    <div>
-      <h3>🧠 Concept Merchandise</h3>
-      <p class="muted mini">
-        Products that visually represent decentralized intelligence, Bitcoin alignment,
-        and long-horizon thinking.
-      </p>
-    </div>
+        <div>
+          <h3>🧠 Concept Merchandise</h3>
+          <p class="muted mini">
+            Products that visually represent decentralized intelligence, Bitcoin alignment,
+            and long-horizon thinking.
+          </p>
+        </div>
 
-    <div>
-      <h3>📦 Limited Releases</h3>
-      <p class="muted mini">
-        Special items tied to milestones in the development of Satoshium.
-      </p>
-    </div>
+        <div>
+          <h3>📦 Limited Releases</h3>
+          <p class="muted mini">
+            Special items tied to milestones in the development of Satoshium.
+          </p>
+        </div>
 
-    <div>
-      <h3>🌐 Community Support</h3>
-      <p class="muted mini">
-        Merchandise that helps supporters participate in and promote the ecosystem.
-      </p>
-    </div>
+        <div>
+          <h3>🌐 Community Support</h3>
+          <p class="muted mini">
+            Merchandise that helps supporters participate in and promote the ecosystem.
+          </p>
+        </div>
 
-    <div>
-      <h3>🏛️ Cultural Archive</h3>
-      <p class="muted mini">
-        Over time, the store may also reflect the cultural history of the Satoshium project.
-      </p>
-    </div>
+        <div>
+          <h3>🏛️ Cultural Archive</h3>
+          <p class="muted mini">
+            Over time, the store may also reflect the cultural history of the Satoshium project.
+          </p>
+        </div>
 
       </div>
     </div>
