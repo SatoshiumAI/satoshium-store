@@ -3,12 +3,41 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
- <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
 <link rel="alternate icon" href="/assets/favicon.ico">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <meta name="theme-color" content="#c47a2c">
-
+ 
 <title>Satoshium — Store Layer</title>
+ 
+<!-- TIER 3 — SEO: meta description -->
+<meta name="description" content="Satoshium Store — the merchandise and economic layer of the Satoshium ecosystem. Phase 1 is live with 10 foundational apparel and artifact designs on TeePublic.">
+ 
+<!-- TIER 3 — SEO: Open Graph -->
+<meta property="og:title" content="Satoshium — Store Layer">
+<meta property="og:description" content="The merchandise and economic layer of the Satoshium ecosystem. Apparel, artifacts, and symbolic items connected to the Satoshium vision.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://satoshium.store/">
+<meta property="og:image" content="https://satoshium.ai/assets/og-store.png">
+<meta property="og:site_name" content="Satoshium">
+<meta property="og:locale" content="en_US">
+ 
+<!-- TIER 3 — SEO: Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Satoshium — Store Layer">
+<meta name="twitter:description" content="The merchandise and economic layer of the Satoshium ecosystem. Apparel, artifacts, and symbolic items.">
+<meta name="twitter:image" content="https://satoshium.ai/assets/og-store.png">
+<meta name="twitter:site" content="@SatoshiumAI">
+ 
+<!-- TIER 3 — SEO: canonical URL -->
+<link rel="canonical" href="https://satoshium.store/">
+ 
+<!-- TIER 3 — PERFORMANCE: preconnect + dns-prefetch for external origins -->
+<link rel="preconnect" href="https://satoshium.link" crossorigin>
+<link rel="dns-prefetch" href="https://satoshium.link">
+<link rel="dns-prefetch" href="https://www.teepublic.com">
+<link rel="dns-prefetch" href="https://static.cloudflareinsights.com">
+ 
 <style>
 :root{
  --card-wm: url('https://satoshium.link/assets/seal.png');
@@ -27,11 +56,20 @@ html,body{
   background:var(--bg);
   color:var(--text);
   font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-  line-height:1.55
+  line-height:1.55;
+  /* TIER 3 — UX: smooth scroll for in-page anchors */
+  scroll-behavior:smooth;
 }
 body{
  padding-top:80px;
 }
+ 
+/* TIER 3 — ACCESSIBILITY: visible keyboard focus ring */
+:focus-visible{
+ outline:2px solid var(--gold2);
+ outline-offset:3px;
+}
+ 
 .reflection{
  margin-top:40px;
  margin-bottom:40px;
@@ -41,27 +79,27 @@ a{color:var(--gold2);text-decoration:none}
 a:hover{color:var(--gold)}
 .wrap{max-width:1080px;margin:0 auto;padding:0 18px}
 .content{padding:34px 18px 60px}
-
+ 
  .wrap.content{
   opacity:0;
   transform:translateY(6px);
   animation:pageEnter .28s cubic-bezier(.22,.61,.36,1) forwards;
 }
-
+ 
 @keyframes pageEnter{
  to{
  opacity:1;
  transform:translateY(0);
  }
 }
-
+ 
 h1,h2,h3{margin:0 0 10px}
 h1{font-size:34px;color:var(--gold2);line-height:1.15}
 h2{font-size:22px;color:var(--gold2);margin-top:0}
 h3{font-size:15px;color:var(--text)}
 p,li{color:var(--text)}
 hr{border:none;border-top:1px solid var(--line);margin:22px 0}
-
+ 
 .hero{
   position:relative;
   overflow:hidden;
@@ -88,12 +126,13 @@ hr{border:none;border-top:1px solid var(--line);margin:22px 0}
   z-index:0;
 }
 .hero > *{position:relative;z-index:1}
-
+ 
+/* TIER 3 — CSS: consolidated duplicate .card blocks (was defined twice in source) */
 .card{
   position:relative;
   overflow:hidden;
   background:linear-gradient(to bottom right,rgba(12,16,24,.94),rgba(12,16,24,.88));
-  border:1px solid var(--line);
+  border:1px solid rgba(214,163,74,.15);
   border-radius:16px;
   padding:16px 16px;
   margin:16px 0;
@@ -118,10 +157,35 @@ hr{border:none;border-top:1px solid var(--line);margin:22px 0}
   transform:translateY(-3px);
   box-shadow:0 10px 25px rgba(0,0,0,.35);
 }
-.card{
-  border:1px solid rgba(214,163,74,.15);
+ 
+/* TIER 3 — CSS: define .card-header (was referenced in HTML but undefined) */
+.card-header{
+  margin-bottom:8px;
 }
-
+.card-header h2{
+  margin:0;
+}
+ 
+/* TIER 3 — CSS: define .btn-primary (was referenced in HTML but undefined) */
+.btn-primary{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:10px 16px;
+  border:1px solid var(--line);
+  border-radius:999px;
+  background:linear-gradient(to bottom right,rgba(214,163,74,.15),rgba(214,163,74,.05));
+  color:var(--gold2);
+  font-weight:700;
+  font-size:14px;
+  transition:transform .18s ease, box-shadow .18s ease;
+}
+.btn-primary:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 25px rgba(0,0,0,.35);
+  color:var(--gold);
+}
+ 
 .muted{color:var(--muted)}
 .pill{
   display:inline-flex;
@@ -156,50 +220,30 @@ hr{border:none;border-top:1px solid var(--line);margin:22px 0}
   grid-template-columns:repeat(3,1fr);
   gap:16px
 }
- .grid-4{
-  display:grid;
-  grid-template-columns:repeat(1fr,1fr);
-  gap:16px
-}
 .card-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
 }
-
+ 
 .teepublic-section {
   margin-top: 24px;
 }
-
+ 
 .store-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 20px;
 }
-
+ 
 .store-grid .full-width {
   grid-column: 1 / -1;
-}
-
-@media (max-width: 768px) {
-  .store-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .store-grid .full-width {
-    grid-column: auto;
-  }
 }
  
 .full-width {
   grid-column: 1 / -1;
 }
-
-@media (max-width: 768px) {
-  .card-grid {
-    grid-template-columns: 1fr;
-  }
-} 
+ 
 .note{
   margin-top:10px;
   padding:12px 14px;
@@ -229,48 +273,77 @@ hr{border:none;border-top:1px solid var(--line);margin:22px 0}
  .span-2{
   grid-column: 1 / -1;
 }
-
+ 
 .mini{font-size:13px}
 ul{margin:8px 0 0 18px}
-
+ 
 @media (max-width:900px){
   .grid-3{grid-template-columns:1fr}
+}
+@media (max-width:768px){
+  .store-grid{grid-template-columns:1fr}
+  .store-grid .full-width{grid-column:auto}
+  .card-grid{grid-template-columns:1fr}
 }
 @media (max-width:760px){
   .grid-2{grid-template-columns:1fr}
   h1{font-size:30px}
+}
+ 
+/* TIER 3 — ACCESSIBILITY: reduced-motion guard */
+@media (prefers-reduced-motion:reduce){
+ html,body{
+  scroll-behavior:auto;
+ }
+ 
+ .wrap.content{
+  animation:none;
+  opacity:1;
+  transform:none;
+ }
+ 
+ .card,
+ .btn-primary{
+  transition:none;
+ }
+ 
+ .card:hover,
+ .btn-primary:hover{
+  transform:none;
+ }
 }
 </style>
 </head>
 <body id="top">
 <div id="topbar-slot" data-topbar="universe"></div>
 <script src="/components/topbar-loader.js"></script>
-
-<main class="wrap content">
-
-<section class="hero">
+ 
+<!-- TIER 3 — ACCESSIBILITY: id="main-content" for landmark targeting -->
+<main id="main-content" class="wrap content">
+ 
+<section class="hero" aria-labelledby="heading-hero">
   <div class="pill">🛍️ Satoshium Store • Brand & Merchandise</div>
-
-  <h1 style="margin-top:14px;">The merchandise and economic layer of Satoshium.</h1>
-
+ 
+  <h1 id="heading-hero" style="margin-top:14px;">The merchandise and economic layer of Satoshium.</h1>
+ 
   <p class="muted" style="max-width:900px;">
     Satoshium Store is the merchandise and brand surface of the Satoshium ecosystem.
     It exists to allow supporters, builders, and observers to participate in the project
     through physical artifacts, apparel, and symbolic items connected to the Satoshium vision.
   </p>
-
+ 
   <p class="muted" style="max-width:900px;">
     If Satoshium AI represents the platform and Satoshium Info represents the knowledge layer,
     then Satoshium Store represents the economic and cultural layer — the place where the
     identity of the ecosystem can extend into the physical world.
   </p>
-
+ 
   <div class="hero-actions">
     <a class="pill pill-link" href="https://satoshium.info/workspace/">Open Workspace</a>
-    <a class="pill pill-link" href="https://satoshium.ai" target="_blank" rel="noopener">Visit Platform</a>
-    <a class="pill pill-link" href="https://satoshium.info" target="_blank" rel="noopener">View Info</a>
+    <a class="pill pill-link" href="https://satoshium.ai" target="_blank" rel="noopener noreferrer">Visit Platform</a>
+    <a class="pill pill-link" href="https://satoshium.info" target="_blank" rel="noopener noreferrer">View Info</a>
   </div>
-
+ 
   <div class="statline">
     <span class="stat">🛍️ Merchandise Layer</span>
     <span class="stat">🎨 Brand Expression</span>
@@ -278,82 +351,79 @@ ul{margin:8px 0 0 18px}
     <span class="stat">📦 Physical Artifacts</span>
   </div>
 </section>
-
-<section class="teepublic-section">
-     <div class="card full-width">
-      <div class="card-header"><h2>🛍️ Satoshium Store — Phase 1 Live</h2></div>
-
-      <p>The Satoshium Store is now live.</p>
-<p class="muted">
-      <p>
-        This is the first step into the economic and cultural layer —
-        where principles become artifacts, and ideas take physical form.
-      </p>
-
-      <p style="margin-top:10px;">
-        <strong>10 foundational designs released.</strong><br>
-        Built on signal, truth, and verifiability.
-      </p>
-
-      <div style="margin-top:16px;">
-        <a href="https://www.teepublic.com/user/satoshium" target="_blank" class="btn-primary">
-          Enter the Store →
-        </a>
-      </p>
-      </div>
-   
-      <div style="margin-top:12px; font-size:12px; opacity:0.7;">
-        Phase 1 • Minimalist Core Series
+ 
+<section class="teepublic-section" aria-labelledby="heading-phase1">
+  <div class="card full-width">
+    <div class="card-header"><h2 id="heading-phase1">🛍️ Satoshium Store — Phase 1 Live</h2></div>
+ 
+    <p>The Satoshium Store is now live.</p>
+ 
+    <p class="muted">
+      This is the first step into the economic and cultural layer —
+      where principles become artifacts, and ideas take physical form.
+    </p>
+ 
+    <p style="margin-top:10px;">
+      <strong>10 foundational designs released.</strong><br>
+      Built on signal, truth, and verifiability.
+    </p>
+ 
+    <div style="margin-top:16px;">
+      <a href="https://www.teepublic.com/user/satoshium" target="_blank" rel="noopener noreferrer" class="btn-primary">
+        Enter the Store →
+      </a>
     </div>
+ 
+    <div style="margin-top:12px; font-size:12px; opacity:0.7;">
+      Phase 1 • Minimalist Core Series
     </div>
-
-    <div class="card">
-      <h2>Why Satoshium Store Exists</h2>
-      <p class="muted">
-        Technology projects often live entirely in code and infrastructure.
-        Satoshium Store exists to give the ecosystem a visible and tangible expression.
-        Through merchandise, symbols, and artifacts, the project becomes something
-        people can hold, wear, share, and represent in the real world.
-      </p>
-      <div class="note">
-        This domain is the cultural and economic layer of the Satoshium ecosystem.
-      </div>
+  </div>
+ 
+  <div class="card" aria-labelledby="heading-why">
+    <h2 id="heading-why">Why Satoshium Store Exists</h2>
+    <p class="muted">
+      Technology projects often live entirely in code and infrastructure.
+      Satoshium Store exists to give the ecosystem a visible and tangible expression.
+      Through merchandise, symbols, and artifacts, the project becomes something
+      people can hold, wear, share, and represent in the real world.
+    </p>
+    <div class="note">
+      This domain is the cultural and economic layer of the Satoshium ecosystem.
     </div>
-
-    <div class="card">
-      <h2>The 2035 Role</h2>
-      <p class="muted">
-        By 2035, this site could become the official merchandise and artifact store
-        for the Satoshium ecosystem — offering items that represent the project's
-        history, milestones, and community identity.
-      </p>
-      <div class="note">
-        In that future, Satoshium Store becomes more than a shop — it becomes a record
-        of the culture that grew around the ecosystem.
-      </div>
+  </div>
+ 
+  <div class="card" aria-labelledby="heading-2035">
+    <h2 id="heading-2035">The 2035 Role</h2>
+    <p class="muted">
+      By 2035, this site could become the official merchandise and artifact store
+      for the Satoshium ecosystem — offering items that represent the project's
+      history, milestones, and community identity.
+    </p>
+    <div class="note">
+      In that future, Satoshium Store becomes more than a shop — it becomes a record
+      of the culture that grew around the ecosystem.
     </div>
-
   </div>
 </section>
-
-<div class="card">
-  <h2>What This Site Can Grow Into</h2>
+ 
+<div class="card" aria-labelledby="heading-grow">
+  <h2 id="heading-grow">What This Site Can Grow Into</h2>
   <div class="grid-3">
-
+ 
     <div>
       <h3>👕 Apparel</h3>
       <p class="muted mini">
         Clothing and wearable designs that represent the philosophy and identity of Satoshium.
       </p>
     </div>
-
+ 
     <div>
       <h3>🎨 Digital Artifacts</h3>
       <p class="muted mini">
         Posters, artwork, and collectible designs inspired by the Satoshium ecosystem.
       </p>
     </div>
-
+ 
     <div>
       <h3>🧠 Concept Merchandise</h3>
       <p class="muted mini">
@@ -361,38 +431,38 @@ ul{margin:8px 0 0 18px}
         and long-horizon thinking.
       </p>
     </div>
-
+ 
     <div>
       <h3>📦 Limited Releases</h3>
       <p class="muted mini">
         Special items tied to milestones in the development of Satoshium.
       </p>
     </div>
-
+ 
     <div>
       <h3>🌐 Community Support</h3>
       <p class="muted mini">
         Merchandise that helps supporters participate in and promote the ecosystem.
       </p>
     </div>
-
+ 
     <div>
       <h3>🏛️ Cultural Archive</h3>
       <p class="muted mini">
         Over time, the store may also reflect the cultural history of the Satoshium project.
       </p>
     </div>
-
+ 
   </div>
 </div>
-
-<div class="card">
-  <h2>The Satoshium Domain Architecture</h2>
+ 
+<div class="card" aria-labelledby="heading-arch">
+  <h2 id="heading-arch">The Satoshium Domain Architecture</h2>
   <p class="muted">
     Satoshium Store is one layer within a broader multi-domain ecosystem. Each domain has a distinct role,
     allowing the project to separate public presence, experiments, infrastructure, knowledge, and commerce.
   </p>
-
+ 
   <ul>
     <li><strong>satoshium.ai</strong> — public-facing platform</li>
     <li><strong>satoshium-progress</strong> — development progress and public build surface</li>
@@ -401,16 +471,16 @@ ul{margin:8px 0 0 18px}
     <li><strong>satoshium.net</strong> — infrastructure and network layer</li>
     <li><strong>satoshium.store</strong> — merchandise and economic layer</li>
   </ul>
-
+ 
   <div class="note">
     Together, these domains form a layered architecture rather than a single flat website.
   </div>
 </div>
-
+ 
 <div class="grid-2">
-
-  <div class="card">
-    <h2>Current Workspace Functions</h2>
+ 
+  <div class="card" aria-labelledby="heading-current">
+    <h2 id="heading-current">Current Workspace Functions</h2>
     <p class="muted">
       Today, Satoshium Store includes a structured workspace for active planning and development.
       That workspace provides a place to organize brand, design, and merchandising ideas before the full store layer exists.
@@ -424,9 +494,9 @@ ul{margin:8px 0 0 18px}
     </ul>
     <p><a href="https://satoshium.info/workspace/">Enter Workspace →</a></p>
   </div>
-
-  <div class="card">
-    <h2>Likely Future Sections</h2>
+ 
+  <div class="card" aria-labelledby="heading-future">
+    <h2 id="heading-future">Likely Future Sections</h2>
     <p class="muted">
       Within reason, this site could gradually expand to include additional commerce and brand-focused layers
       as the ecosystem matures.
@@ -442,107 +512,107 @@ ul{margin:8px 0 0 18px}
       <li>Buyer onboarding and store policies</li>
     </ul>
   </div>
-
+ 
 </div>
-
-<div class="card">
-  <h2>Possible Future Layers</h2>
+ 
+<div class="card" aria-labelledby="heading-layers">
+  <h2 id="heading-layers">Possible Future Layers</h2>
   <p class="muted">
     As Satoshium Store matures, this domain can expand beyond today’s workspace and become a broader
     commercial and cultural surface for the ecosystem. These are plausible future layers that could be added
     over time without changing the core purpose of the site.
   </p>
-
+ 
   <div class="grid-3">
-
+ 
     <div>
       <h3>🛒 Product Catalog</h3>
       <p class="muted mini">
         A structured home for apparel, prints, accessories, and future merchandise collections tied to the Satoshium identity.
       </p>
     </div>
-
+ 
     <div>
       <h3>🎁 Limited Drops</h3>
       <p class="muted mini">
         A release layer for milestone-based items, event-driven merchandise, and special edition products.
       </p>
     </div>
-
+ 
     <div>
       <h3>🖼️ Artwork & Posters</h3>
       <p class="muted mini">
         A place for visual artifacts, framed concepts, collectible designs, and symbolic pieces connected to the project.
       </p>
     </div>
-
+ 
     <div>
       <h3>🧠 Brand Storytelling</h3>
       <p class="muted mini">
         A longer-form layer that explains the ideas, symbolism, and philosophy behind products and collections.
       </p>
     </div>
-
+ 
     <div>
       <h3>🤝 Community Support</h3>
       <p class="muted mini">
         A practical surface where supporters can participate in and help strengthen the cultural presence of the ecosystem.
       </p>
     </div>
-
+ 
     <div>
       <h3>🏛️ Artifact Archive</h3>
       <p class="muted mini">
         A preserved record of major releases, store milestones, and physical expressions of the Satoshium project over time.
       </p>
     </div>
-
+ 
   </div>
-
+ 
   <div class="note">
     These layers do not all need to exist now. The purpose of listing them is to show how
     satoshium.store can grow into a durable merchandise and cultural domain by 2035.
   </div>
 </div>
-
-<div class="card">
-  <h2>A Big-Picture View of 2035</h2>
+ 
+<div class="card" aria-labelledby="heading-2035view">
+  <h2 id="heading-2035view">A Big-Picture View of 2035</h2>
   <p class="muted">
     In the long run, Satoshium Store could become the place where the ecosystem’s identity takes physical form:
     not only through products, but through symbols, artifacts, and milestone pieces that reflect the growth of the project.
     A future visitor might come here not only to browse merchandise, but to see how the culture of Satoshium evolved over time.
   </p>
-
+ 
   <p class="muted">
     That is the larger role of this site. It is where the project learns how to express itself in the world.
   </p>
 </div>
-
-<div class="card">
-  <h2>Current Status</h2>
+ 
+<div class="card" aria-labelledby="heading-status">
+  <h2 id="heading-status">Current Status</h2>
   <p class="muted">
     Satoshium Store is currently in its early conceptual stage.
     The structure of the domain has been established, but the merchandise layer
     will grow gradually alongside the development of the broader Satoshium ecosystem.
   </p>
-
+ 
   <p class="muted">
     Future releases may include apparel, collectibles, artwork, and symbolic
     items representing milestones in the evolution of Satoshium.
   </p>
 </div>
-
+ 
 </main>
-
+ 
 <div class="wrap reflection">
 <hr />
 <div id="random-saying" class="muted" style="margin-bottom:14px; max-width:760px;">
   Satoshium is being built slowly, in public, and with architectural discipline.
 </div>
 <hr />
-
+ 
 <div id="footer-container"></div>
-
+ 
 <script src="https://satoshium.link/assets/sayings.js"></script>
 <script>
 fetch("https://satoshium.link/components/footer.html")
@@ -555,4 +625,3 @@ fetch("https://satoshium.link/components/footer.html")
  <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "77fa0a3f7be1451cb68a8d0901574e4e"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>
-
